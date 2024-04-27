@@ -1,0 +1,124 @@
+{% extends "layout3.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <script
+      src="https://kit.fontawesome.com/13f8dfd7db.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        background-image: url("https://static.vecteezy.com/system/resources/previews/021/153/314/large_2x/feel-softness-smiling-asian-young-woman-girl-touching-fluffy-towel-cotton-smelling-fresh-clean-clothes-on-table-after-washing-laundry-dry-household-working-at-home-laundry-and-maid-free-photo.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+      }
+      
+      form {
+        background-color: rgba(255, 255, 255, 0.9);
+        margin-top: 5%;
+        padding: 40px;
+        border-radius: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        width: 400px;
+        text-align: center;
+        display:block;
+      }
+      
+      h1 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+    
+      input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 2px solid #ccc;
+        margin-bottom: 20px;
+        width: calc(100% - 20px);
+        outline: none;
+        transition: border-color 0.3s ease;
+        color: #000 !important; /* Change this line to set the color to black */
+      }
+
+      input:hover,
+      input:focus {
+        border-color: #3498db;
+      }
+
+      .btn {
+        padding: 12px;
+        border-radius: 25px;
+        cursor: pointer;
+        border: none;
+        background-color: #4caf50;
+        color: #fff;
+        width: 100%;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #2980b9;
+      }
+
+      .register-link {
+        margin-top: 20px;
+      }
+
+      .register-link a {
+        color: #3498db;
+        text-decoration: none;
+      }
+
+      .register-link a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="login-page">
+      <form action="/sign_in" method="POST">
+        
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %}
+        <ul class="flashes">
+          {% for category, message in messages %}
+          <li class="{{ category }}" style="list-style-type: none; color: red">
+            {{ message }}
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
+
+        <h1>Login</h1>
+        
+        <input type="email" placeholder="Email" required name="email" />
+        
+        <input
+          type="password"
+          placeholder="Password"
+          required
+          name="password"
+        />
+        
+        <button type="submit" class="btn">Login</button>
+
+        <div class="register-link">
+          <p>Don't have an account? <a href="/signup">Register</a></p>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+{% endblock %}

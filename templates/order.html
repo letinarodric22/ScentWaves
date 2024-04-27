@@ -1,0 +1,66 @@
+
+{% extends "layout2.html" %}
+ {% block content %}
+
+<body>
+    
+
+   
+
+    <div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+
+                <table id="myTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Item name</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Created At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sale in sales %}
+                        <tr>
+                            <td>{{ sale[0] }}</td>
+                            <td name="s_id">
+                                {% for s in ser %}
+                                {% if s[0] == sale[1] %}
+                                {{ s[2] }}
+                                {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>{{ sale[3] }}</td>
+                            <td>
+                                {% for s in ser %}
+                                    {% if s[0] == sale[1] %}
+                                        {{ s[3] * sale[3] }} <!-- Calculate total price by multiplying selling price with quantity -->
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>{{ sale[5] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    
+
+    <!-- Initialize DataTable -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    <script>
+        // Make sure to wait for the document to be ready before initializing DataTable
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
+</body>
+
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <title>Pricing</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        .container {
+            margin-top: 250px;
+            margin-bottom: 50px; /* Add margin at the bottom for spacing */
+        }
+        .pricing-table {
+            margin-bottom: 100px; /* Add margin between tables */
+        }
+        h2 {
+            text-align: center;
+        }
+        .checkout-button {
+            text-align: center;
+            margin-top: 50px; /* Adjust margin top for spacing */
+        }
+    </style>
+
+</head>
+<body>
+<div class="container" style="padding: 0px 100px">
+    {% for category, items in items_by_category.items() %}
+    <div class="pricing-table">
+        <h2>{{ category }}</h2>
+        <table id="table_{{ loop.index }}" class="display">
+            <thead>
+            <tr>
+                <th>Item</th>
+                <th></th>
+                <th>Price</th>
+                <th>Action</th> <!-- Add a new column for the Add to Cart button -->
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item[2] }}</td>
+                <td><img src="{{ item[4] }}" alt="item image" style="width: 30%; height: 30%;"></td>
+                <td>{{ item[3] }}</td>
+                <td>
+                    <form action="/addtocart" method="POST">
+                        <input type="hidden" name="s_id" value="{{ item[0] }}">
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="quantity" placeholder="Quantity" required>
+                            <button type="submit" class="btn btn-primary" style="border-radius: 0 5px 5px 0;">Add to Cart</button>
+                        </div>
+                    </form>
+                </td>
+                
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="checkout-button">
+    <a href=""><button onclick="redirectToCheckout()">Checkout</button><!-- Checkout button -->
+</div>
+
+<script>
+    // Function to redirect to the checkout page
+    function redirectToCheckout() {
+        window.location.href = "checkout.html";
+    }
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+<script>
+    // Make sure to wait for the document to be ready before initializing DataTable
+    $(document).ready(function () {
+        {% for category, items in items_by_category.items() %}
+        $("#table_{{ loop.index }}").DataTable();
+        {% endfor %}
+    });
+
+    // Function to handle adding items to the cart
+    function addToCart(itemName, itemPrice) {
+        // You can implement your logic here to add the item to the cart
+        // For demonstration purposes, let's just alert the item name and price
+        alert("Added to Cart: " + itemName + " - " + itemPrice);
+    }
+
+    // Function to handle the checkout process
+    function checkout() {
+        // You can implement your logic here to display all items added to the cart and calculate the total amount
+        // For demonstration purposes, let's just alert a message
+        alert("Checkout process initiated. Display all items in the cart and calculate the total amount.");
+    }
+</script>
+</body>
+</html>
+{% endblock %} 

@@ -1,0 +1,45 @@
+
+{% extends "layout2.html" %}
+ {% block content %}
+  <div class="container" style="padding:0px 100px;">
+  <table id="myTable" class="display">
+    <thead> 
+      <tr>
+        <th>Serial Number</th>
+        <th>Fullname</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Date Joined</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in renny %}
+      <tr>
+        <td>{{ i[0] }}</td>
+        <td>{{ i[1] }}</td>
+        <td>{{ i[3] }}</td>
+        <td>{{ i[2] }}</td>
+        <td>{{ i[4] }}</td>
+        <td>{{ i[6] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+<script>
+    // Make sure to wait for the document to be ready before initializing DataTable
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+</script>
+
+  <!-- Add your JavaScript scripts or link to external scripts here -->
+</body>
+
+</html>
+{% endblock %}
+

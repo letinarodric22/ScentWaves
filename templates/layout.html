@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    
+    <link rel="stylesheet" href="static/style.css" />
+    <script
+      src="https://kit.fontawesome.com/13f8dfd7db.js"
+      crossorigin="anonymous"
+    ></script>
+    <style></style>
+  </head>
+  <body>
+    <nav>
+      <div class="navbar">
+        <ul>
+          <p class="logo">ScentWaves</p>
+          <li><a href="/index">Home</a></li>
+          <li><a href="/index#about">About</a></li>
+          <li><a href="/services">Services </a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/cart">Cart</a></li>
+          <div class="login">
+            <li>
+              <a
+                href="/sign_in"
+                style="
+                  color: white;
+                  background-color: #4caf50;;
+                  border-radius: 35px;
+                "
+                >Login</a
+              >
+            </li>
+          </div>
+          <div class="sign-up">
+            <li>
+              <a
+                href="/signup"
+                style="
+                  color: white;
+                  background-color: #4caf50;;
+                  border-radius: 35px;
+                "
+                >Sign Up</a
+              >
+            </li>
+          </div>
+        </ul>
+      </div>
+    </nav>
+
+    {% block content %} {% endblock %}
+    <footer>
+      <div class="row">
+        <div class="col">
+          <h3>Open Hours</h3>
+          <p>
+            Monday-Saturday. <br>
+            From 7:00am-9:00pm
+          </p>
+        </div>
+        <div class="col">
+          <h3>Office</h3>
+          <p>Along Chuka-Meru highway</p>
+          <p>Chuka, Ndagani</p>
+          <p class="email-id">rennyyegon8@gmail.com</p>
+          <h4>+254740875571</h4>
+        </div>
+
+        <div class="col">
+          <h3>Newsletter</h3>
+          <form>
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="Enter your email ID" required />
+            <button type="submit">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>
+          <div class="social-icons">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i>
+            <a href="https://www.facebook.com/Renny.K.Yegon/" target="_blank"
+              ><i class="fa-brands fa-facebook-f" style="color:white;"></i
+            ></a>
+            <a href="https://www.instagram.com/renny.k.yegon/" target="_blank"
+              ><i class="fa-brands fa-instagram" style="color:white;"></i
+            ></a>
+            <a href="https://twitter.com/Ren_noh" target="_blank"
+              ><i class="fa-brands fa-twitter" style="color:white;"></i
+            ></a>
+            <a href="https://www.pinterest.com/rennyyegon/" target="_blank"
+              ><i class="fa-brands fa-pinterest" style="color:white;"></i
+            ></a>
+          </div>
+        </div>
+
+        <!-- My laundry map -->
+        <div class="col">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7979.512340130317!2d37.652608653359245!3d-0.3198034699732912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1827b88d717d25fd%3A0x20fe0c9e97c88a7c!2sndagani!5e0!3m2!1sen!2ske!4v1706217817421!5m2!1sen!2ske"
+            width="100%"
+            height="300px"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

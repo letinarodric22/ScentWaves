@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    
+    <link rel="stylesheet" href="static/style.css" />
+    <script
+      src="https://kit.fontawesome.com/13f8dfd7db.js"
+      crossorigin="anonymous"
+    ></script>
+    <style></style>
+  </head>
+  <body>
+    <nav>
+      <div class="navbar">
+        <ul>
+          <p class="logo">ScentWaves</p>
+          <li><a href="/index">Home</a></li>
+          <li><a href="/index#about">About</a></li>
+          <li><a href="/services">Services </a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/cart">Cart</a></li>
+          <div class="login">
+            <li>
+              <a
+                href="/sign_in"
+                style="
+                  color: white;
+                  background-color: #4caf50;;
+                  border-radius: 35px;
+                "
+                >Login</a
+              >
+            </li>
+          </div>
+          <div class="sign-up">
+            <li>
+              <a
+                href="/signup"
+                style="
+                  color: white;
+                  background-color: #4caf50;;
+                  border-radius: 35px;
+                "
+                >Sign Up</a
+              >
+            </li>
+          </div>
+        </ul>
+      </div>
+    </nav>
+    {% block content %} {% endblock %}

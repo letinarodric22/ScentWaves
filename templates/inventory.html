@@ -1,0 +1,272 @@
+{% extends "layout2.html" %} {% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inventory</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css"
+    />
+  </head>
+  <body>
+    <!--this is a modal-->
+
+    <!-- Button trigger modal -->
+    <div class="row">
+      <div class="col-6"></div>
+      <div class="col-3">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Add an item
+        </button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add an Item</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form action="/addservice" method="POST">
+                  <div>
+                    <label for="options">Select service:</label>
+                    <select id="servicetype" name="servicetype">
+                      <option value="Dry cleaning">Dry cleaning</option>
+                      <option value="Press">Press</option>
+                      <option value="Wash and fold">Wash and fold</option>
+                      <option value="Leather cleaning">Leather cleaning</option>
+                      <option value="Repairs">Repairs</option>
+                      <option value="Household items">Household items</option>
+                      <option value="Shoe care">Shoe care</option>
+                      <option value="Clothing Donations">
+                        Clothing donations
+                      </option>
+                      <!-- Add more options as needed -->
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label"
+                      >Item Type</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="itemtype"
+                      name="itemtype"
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="service_price" class="form-label"
+                      >Service Price</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="service_price"
+                      name="service_price"
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="image" class="form-label"
+                      >Image</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="image"
+                      name="image"
+                    />
+                  </div>
+
+                  <button type="submit">Submit</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3"></div>
+
+    <!--inventory table-->
+
+    <div class="container" style="padding: 0px 100px">
+      <table id="myTable" class="display">
+        <thead>
+          <tr>
+            <th>service ID</th>
+            <th>service type</th>
+            <th>item type</th>
+            <th>Image</th>
+            <th>price</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in service %}
+          <tr>
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td><img src="{{ i[4] }}" alt="item image" style="width: 30%; height: 30%;"></td>
+            <td>{{ i[3] }}</td>
+            <td>
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#editModal{{ i[0] }}"
+              >
+                Edit product
+              </button>
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="editModal{{ i[0] }}"
+                tabindex="-1"
+                aria-labelledby="editModalLabel{{ i[0] }}"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1
+                        class="modal-title fs-5"
+                        id="editModalLabel{{ i[0] }}"
+                      >
+                        Edit {{ i[2] }}
+                      </h1>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="/editservice" method="POST">
+                        <div class="mb-3">
+                          <label for="name" class="form-label"></label>
+                          <input
+                            type="hidden"
+                            class="form-control"
+                            id="s_id"
+                            name="s_id"
+                            value="{{ i[0] }}"
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label for="name" class="form-label"
+                            >Service Type</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="servicetype"
+                            name="servicetype"
+                            value="{{ i[1] }}"
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label for="itemtype" class="form-label"
+                            >Item Type</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="itemtype"
+                            name="itemtype"
+                            value="{{ i[2] }}"
+                          />
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="service_price" class="form-label"
+                            >Service Price</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="service_price"
+                            name="service_price"
+                            value="{{ i[3] }}"
+                          />
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="image" class="form-label"
+                            >Image</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="image"
+                            name="image"
+                            value="{{ i[4] }}"
+                          />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                          Update
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <!-- Delete Button -->
+              <form action="/deleteservice" method="POST">
+                <input type="hidden" name="s_id" value="{{ i[0] }}" />
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    <script>
+      // Make sure to wait for the document to be ready before initializing DataTable
+      $(document).ready(function () {
+        $("#myTable").DataTable();
+      });
+    </script>
+  </body>
+</html>
+{% endblock %}

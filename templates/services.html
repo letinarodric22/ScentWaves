@@ -1,0 +1,237 @@
+{% extends "layout.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <title>service page</title>
+  <head>
+    <style>
+      * {
+      
+        box-sizing: border-box;
+      }
+
+      .our-services-heading{
+      background: linear-gradient(to right, #34b8f5, #272a2b);
+      padding:10px;
+      font-size:25px;
+      margin-bottom:50px;
+      margin-top:90px;
+    }
+      /* Create two equal columns that floats next to each other */
+      .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+       
+      }
+
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+        margin-bottom:400px;
+       
+      }
+
+      h1{
+        color:rgb(66, 151, 207);
+      }
+      p{
+        font-size:25px;
+      }
+
+      .straight-line1{
+        border: 1px solid grey;
+        height: 1px;
+        margin-bottom:3px;
+      }
+      .straight-line2{
+        border: 1px solid grey;
+        height: 1px;
+        margin-bottom:20px;
+
+      }
+
+      /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+      @media screen and (max-width: 600px) {
+        .column {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    
+    <!-- services -->
+    <div class="our-services-heading"  style="text-align: center;">
+        <h1 style="color:white;">Our Services</h1>
+    </div>
+
+    <!-- dry cleaning services -->
+    <div class="row" style="margin-left:70px">
+      <div class="column">
+        <h1>Dry cleaning</h1>
+        <p>
+          We didn’t come up with the phrase ‘environment friendly’, but come to
+          think of it, maybe we should have. With no hazardous chemicals in our
+          portfolio, we work on a clean conscience, and put people and planet
+          before profits, because you deserve better. Just think of us as your
+          personal assistant.
+        </p>
+      </div>
+      <div class="column">
+        <img
+          src="http://drycleanerstoronto.com/wp-content/uploads/2014/07/img_8.jpg"
+        />
+      </div>
+    </div>
+
+    <div class="straight-line1"></div>
+    <div class="straight-line2"></div>
+
+    <!-- press services -->
+
+    <div class="row" style="margin-left:70px">
+      <div class="column">
+        <img
+          src="http://drycleanerstoronto.com/wp-content/uploads/2014/07/shirts-e1502309641224.jpg"
+        />
+      </div>
+        <div class="column">
+          <h1>Press</h1>
+          <p>
+            Nothing shouts ‘sharp’ like a freshly pressed shirt. It is the only
+            way to announce ‘I have arrived.’ We iron out all the wrinkles, it’s
+            almost as if we give you the shirt brand new. Don’t stress, we’ll
+            press your shirts, so you impress your boss.
+          </p>
+        </div>
+    </div>
+
+    <div class="straight-line1"></div>
+    <div class="straight-line2"></div>
+
+    <!-- wash and fold services -->
+
+    <div class="row" style="margin-left:70px">
+      <div class="column">
+        <h1>Wash and fold</h1>
+        <p>
+          Busy? Is your laundry list for the weekend running over and laundry is
+          the last thing on your mind? Don’t fret, we’ll take care of your
+          clothes so that you can take care of everything else. Contact us and
+          not only will we wash your clothes for you, we’ll go the extra mile
+          and fold them, because who likes a half-done job?
+        </p>
+      </div>
+      <div class="column">
+        <img
+          src="http://drycleanerstoronto.com/wp-content/uploads/2014/07/clothes-166848_640-e1502310814624.jpg"
+        />
+      </div>
+    </div>
+
+    <div class="straight-line1"></div>
+    <div class="straight-line2"></div>
+
+
+    <!-- leather cleaning services -->
+    <div class="row" style="margin-left:70px">
+      <div class="column">
+        <img
+          src="https://i.pinimg.com/564x/a5/de/b6/a5deb69e09822917da69f98eb20d94f0.jpg"
+        />
+      </div>
+      <div class="column">
+        <h1>Leather cleaning</h1>
+        <p>
+          When you bring us your leather garments, we handle them with
+          specialized care. With stains as tough as leather, our specialized
+          cleaning is as soft as velvet, leaving your garments revitalized and
+          genuinely refreshed.
+        </p>
+      </div>
+      
+    </div>
+
+    <div class="straight-line1"></div>
+    <div class="straight-line2"></div>
+
+
+   <!--Repair services  -->
+    <div class="row" style="margin-left:70px">
+      <div class="column">
+        <h1>Repairs</h1>
+        <p>
+          If it’s broke, let us fix it.
+
+          Whether it’s your favorite shirt, or your go-to-dress, we go the extra length to sew and patch them up to acute precision.
+          
+          When we are done, they are as good as new!
+        </p>
+      </div>
+      <div class="column">
+        <img
+          src="http://drycleanerstoronto.com/wp-content/uploads/2014/07/Sewing-e1501885243486.jpg"
+        />
+      </div>
+      
+    </div>
+
+    <div class="straight-line1"></div>
+    <div class="straight-line2"></div>
+
+
+    <!--Household items services -->
+
+    <div class="row" style="margin-left:70px">
+      
+      <div class="column">
+        <img
+          src="http://drycleanerstoronto.com/wp-content/uploads/2014/07/house-2569325_640-e1502311018208.jpg"
+        />
+      </div>
+      <div class="column">
+        <h1>Household items</h1>
+        <p>
+          We just don’t do clothes alone. Have a fabric? Anything really – from furniture covers to carpets, look no further.
+
+We are the cleaning experts after all, aren’t we?
+        </p>
+      </div>
+      
+    </div>
+
+    <div class="straight-line1"></div>
+    <div class="straight-line2"></div>
+
+
+    
+<!--clothing donation services  -->
+    <div class="row" style="margin-left:70px">
+      
+      
+      <div class="column">
+        <h1>Clothing Donations</h1>
+        <p>
+          
+Have some extra items you no longer use? Books? Toiletries? Clothes? Computers?
+
+Don’t have junk laying all round – donate and watch as someone’s life changes somewhere else.
+
+People won’t care how much you know, until they know how much you care.
+        </p>
+      </div>
+      <div class="column">
+        <img
+          src="https://i.pinimg.com/564x/d3/05/e9/d305e951a9545ef8625c3a313079cd28.jpg"
+        />
+      </div>
+      
+    </div>
+
+    
+  </body>
+</html>
+ {% endblock %}
